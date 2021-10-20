@@ -12,9 +12,6 @@
 
 https://bk-basic-express-server.herokuapp.com/
 
-https://dashboard.heroku.com/apps/bk-basic-express-server
-
-https://github.com/bkasprzyk19/basic-express-server
 
 
 
@@ -24,7 +21,7 @@ https://github.com/bkasprzyk19/basic-express-server
 
 ## Routes
 
-- HTTP GET
+<!-- - HTTP GET
 
 https://bkasprzyk-server-deploy-prod.herokuapp.com/repeat
 
@@ -36,7 +33,7 @@ https://bkasprzyk-server-deploy-prod.herokuapp.com/repeat
 https://bkasprzyk-server-deploy-prod.herokuapp.com/talk
 
   - Path: /talk
-    - Accepts a string.
+    - Accepts a string. -->
     - responds with a string in all caps.
 
 ________________________*** INSTRUCTIONS BELOW *** _____________________________________________________
