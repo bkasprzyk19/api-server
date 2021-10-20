@@ -1,8 +1,9 @@
 'use strict';
 
-const app = require('./app.js');
+require('dotenv').config();
+
+const server = require('./src/server.js');
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log('App is running on port', PORT);
-});
+server.start(PORT);
+
