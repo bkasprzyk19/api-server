@@ -1,6 +1,6 @@
 # basic-api
 
-## Express Server
+
 
 ## Installation
 
@@ -24,7 +24,7 @@ npm install or npm i
 
 ## Links to application deployment
 
-https://bk-basic-express-server.herokuapp.com/
+https://basic-api-server-b.herokuapp.com/
 
 
 

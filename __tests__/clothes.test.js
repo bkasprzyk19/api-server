@@ -1,6 +1,6 @@
 'use strict';
 
-const { db, phrases } = require('../model');
+const { db, clothes } = require('../src/model');
 
 // Initialize any things that our tests need
 beforeAll(async () => {
