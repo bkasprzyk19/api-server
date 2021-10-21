@@ -1,28 +1,35 @@
 'use strict';
 
-const logger = require('../middleware/logger.js');
+const logger = require('../src/middleware/logger.js');
 
 describe('Testing the logging middleware', () => {
 
-  let req = {method: 'GET'};
+  let consoleSpy;
+  let req = {};
   let res = {};
-  let next = jest.fn(); // a jest "spy"
-  console.log = jest.fn();
+  let next = jest.fn();
 
-  it('should be able to log a method', () => {
+  beforeEach(() => {
 
-    // actually use our logger
-    logger(req, res, next);
-
-    expect(console.log).toHaveBeenCalledWith('GET');
-    expect(next).toHaveBeenCalled();
-    // expect(next).toHaveBeenCalledWith('Error text');
+    consoleSpy = jest.spyOn(console, 'log').mockImplementation();
   });
 
-  it('Should throw an error when a different method is called', () => {
-    req.method = 'PUT';
+  afterEach(() => {
+    consoleSpy.mockRestore();
+  });
 
+
+  it('Logs Output?', () => {
+
+  
     logger(req, res, next);
-    expect(next).toHaveBeenCalledWith('something went wrong');
+
+   expect(consoleSpy).toHaveBeenCalled();
+  });
+
+  it('Calls next?', () => {
+   
+    logger(req, res, next);
+    expect(next).toHaveBeenCalled();
   });
 });

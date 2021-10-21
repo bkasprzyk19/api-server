@@ -21,6 +21,10 @@ https://bk-basic-express-server.herokuapp.com/
 
 ## Routes
 
+HTTP GET
+Path: /person
+responds with string used : request query ?name=string.
+
 <!-- - HTTP GET
 
 https://bkasprzyk-server-deploy-prod.herokuapp.com/repeat
