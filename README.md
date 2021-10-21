@@ -1,5 +1,7 @@
 # basic-api
 
+![image](./lab3.JPG)
+
 
 
 ## Installation
