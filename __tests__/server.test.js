@@ -1,41 +1,33 @@
 'use strict';
 
-const app = require('../server.js');
+const { server } = require('../src/server.js');
 const supertest = require('supertest');
 
-const request = supertest(app.app);
+const request = supertest(server);
 
-describe('Testing our Talk Server', () => {
-  it('Should reponse with a new Phrase on POST to /talk', async () => {
+describe('Testing our Server', () => {
+  it('should reject bad route', async () => {
 
-    const response = await request.post('/talk').send({
-      words: 'I am some test words',
+       const response = await request.delete('/person?name=Foo');
+      expect(response.status).toBe(404);
+     });
+
+  it('SHould reject req on bad methods', async () => {
+      const response = await request.put('/person?name=Foo');
+     expect(response.status).toBe(404);
     });
-    expect(response.status).toBe(200);
-    expect(response.text).toBe('I am some test words');
+  it('SHould reject requests with no name in the query string', async () => {
+    const response = await request.patch('/person');
+   expect(response.status).toBe(500);
   });
-
-  it('Should respond with the last phrase on GET to /repeat', async () => {
-
-    const response = await request.get('/repeat');
-
-    expect(response.status).toBe(200);
-    expect(response.text).toBe('I am some test words');
+  it('SHould accept requests with name in the query string', async () => {
+    const response = await request.get('/person?name=Foo');
+   expect(response.status).toBe(200);
   });
+  it('should respond with a string on GET to /person route', async () => {
+    const response = await request.put('/person?name=Foo');
+   expect(response.status).toBe(200);
+   expect(response.text).toBe('Foo');
 
-  it ('should reject PUT requests', async () => {
-    const response = await request.put('/');
-
-    expect(response.status).toBe(405);
-  });
-    it ('should reject PATCH requests', async () => {
-    const response = await request.patch('/');
-
-    expect(response.status).toBe(405);
-  });
-    it ('should reject DELETE requests', async () => {
-    const response = await request.delete('/');
-
-    expect(response.status).toBe(405);
   });
 });

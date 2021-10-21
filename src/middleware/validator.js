@@ -4,10 +4,10 @@ const err = require('../error-handlers/500.js');
 
 module.exports = (req, res, next) => {
 
-    if (!req.query.name) {
-        next(err);
+    if (req.query.name) {
+        next();
       } else{
-        next(); 
+        next('something is wrong'); 
       }
-}
+};
 
