@@ -7,14 +7,23 @@ const error404 = require('./error-handlers/404.js');
 const error500 = require('./error-handlers/500.js');
 const app = express();
 
-const {food, clothes} = require('./model');
-const { response } = require('express');
+const clothesRouter = require('../routes/clothes.js');
+const foodRouter = require('../routes/food.js');
+
+
+// const {food, clothes} = require('./model');
+
+// const { response } = require('express');
 
 app.use(express.json());
 app.use(logger);
 app.use(validator);
 
-app.get('/person', handlePeople);
+app.use('/clothes', clothesRouter)
+app.use('/food', foodRouter)
+
+
+app.get('/person/:name', handlePeople);
 app.use('*', error404);
 app.use(error500);
 

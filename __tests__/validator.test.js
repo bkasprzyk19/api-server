@@ -1,8 +1,9 @@
+
 'use strict';
 
-const validator = require('../src/middleware/validator');
+const validator = require('../src/middleware/validator.js');
 
-describe('Testing logging middleware', () => {
+describe('Testing logger middleware', () => {
   let consoleSpy;
   let req = {
     query: {},
@@ -10,24 +11,24 @@ describe('Testing logging middleware', () => {
   let res = {};
   let next = jest.fn();
 
-
   beforeEach(() => {
+    // Attach to the console
     consoleSpy = jest.spyOn(console, 'log').mockImplementation();
   });
 
   afterEach(() => {
+    // Detaching from the console
     consoleSpy.mockRestore();
   });
 
-  it('properly calls next', () => {
+  it('Properly calls next', () => {
     req.query = '?name=Foo';
     validator(req, res, next);
     expect(next).toHaveBeenCalled();
   });
 
-  it('properly logs outputs', () => {
+  it('Properly logs output', () => {
     validator(req, res, next);
     expect(consoleSpy).toHaveBeenCalled();
   });
-
 });

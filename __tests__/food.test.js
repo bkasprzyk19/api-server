@@ -21,7 +21,7 @@ describe('Testing our sequelize model', () => {
 
     let newFood = await food.create({
       name: 'steak',
-      calories: '992',
+      calories: 992,
     });
 
     console.log(newFood);
