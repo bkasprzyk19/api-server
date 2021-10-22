@@ -17,7 +17,7 @@ const foodRouter = require('../routes/food.js');
 
 app.use(express.json());
 app.use(logger);
-app.use(validator);
+// app.use(validator);
 
 app.use('/clothes', clothesRouter)
 app.use('/food', foodRouter)
