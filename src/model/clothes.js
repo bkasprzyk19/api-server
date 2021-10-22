@@ -1,8 +1,8 @@
 'use strict';
 
-const Clothes = (sequelize, DataTypes) =>
+const clothes = (sequelize, DataTypes) =>
   sequelize.define("Clothes", {
-    words: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -12,4 +12,4 @@ const Clothes = (sequelize, DataTypes) =>
     },
   });
 
-module.exports = Clothes;
+module.exports = clothes;
